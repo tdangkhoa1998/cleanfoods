@@ -1,0 +1,28 @@
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+
+  <input type="hidden" name="idGioHang" #idGioHang="ngModel" [(ngModel)]="formData.idGioHang">
+  <input type="hidden" name="idDonHang" #idDonHang="ngModel" [(ngModel)]="formData.idDonHang">
+  <input type="hidden" name="idSanPham" #idSanPham="ngModel" [(ngModel)]="formData.idSanPham">
+  <input type="hidden" name="TongTien" #TongTien="ngModel" [(ngModel)]="formData.TongTien">
+  <input type="hidden" name="TenSanPham" #TenSanPham="ngModel" [(ngModel)]="formData.TenSanPham">
+  <input type="hidden" name="GiaBan" #GiaBan="ngModel" [(ngModel)]="formData.GiaBan">
+  <input type="hidden" name="NoiDung" #NoiDung="ngModel" [(ngModel)]="formData.NoiDung">
+
+
+  <div class="row justify-content-md-center">
+    <div class="form-group col-md-6">
+      <label>Số Lượng</label>
+      <input type="number" name="SoLuong" required #SoLuong="ngModel" min="1" max="600" [(ngModel)]="formData.SoLuong"
+        class="form-control" [class.is-invalid]="!isValid && (formData.SoLuong <= 0 ||formData.SoLuong > 600)">
+      <div class="validation-error" *ngIf="SoLuong.invalid && SoLuong.touched">Bạn đã nhập sai</div>
+    </div>
+  </div>
+
+  <div class="form-group text-center">
+    <button style="width: 150px;" type="submit"
+      [disabled]="form.invalid || (formData.SoLuong <= 0 ||formData.SoLuong > 600)" class="btn btn-outline-success">Xác
+      Nhận</button>
+    <button style="width: 150px;" type="button" class="btn btn-outline-danger ml-5" [mat-dialog-close]>Hủy Bỏ</button>
+  </div>
+
+</form>

@@ -1,0 +1,169 @@
+<div class="card">
+    <div class="card-header">
+        <h4 class="text-center">Thông Tin Đơn Hàng</h4>
+    </div>
+    <div class="card-body">
+        <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+
+
+            <!--Don Hang Start-->
+
+            <input type="hidden" name="idDonHang" #idDonHang="ngModel" [(ngModel)]="donhangService.formData.idDonHang"
+                class="form-control">
+            <input type="hidden" name="idKhachHang" #idKhachHang="ngModel"
+                [(ngModel)]="donhangService.formData.idKhachHang" class="form-control">
+            <input type="hidden" name="TrangThai" #TrangThai="ngModel" [(ngModel)]="donhangService.formData.TrangThai"
+                class="form-control">
+            <input type="hidden" name="NgayXacNhanDonHang" #NgayXacNhanDonHang="ngModel"
+                [(ngModel)]="donhangService.formData.NgayXacNhanDonHang" class="form-control">
+
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Mã Số Đơn Hàng</label>
+                        <input type="number" readonly name="MaSoDonHang" #MaSoDonHang="ngModel"
+                            [(ngModel)]="donhangService.formData.MaSoDonHang" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phương Thức Thanh Toán</label>
+                        <select name="PhuongThucThanhToan" #PhuongThucThanhToan="ngModel"
+                            [(ngModel)]="donhangService.formData.PhuongThucThanhToan" class="form-control">
+                            <option value="0"> -- Chọn phương thức thanh toán -- </option>
+                            <option value="Thanh toán bằng tiền mặt">Thanh toán bằng tiền mặt</option>
+                            <option value="Thanh toán qua paypal">Thanh toán qua paypal</option>
+                            <option value="Thanh toán qua tài khoản ngân hàng">Thanh toán qua tài khoản ngân hàng
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Tổng Tiền</label>
+                        <input type="number" readonly name="TongTien" #TongTien="ngModel"
+                            [(ngModel)]="donhangService.formData.TongTien" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <!--Don Hang End-->
+
+            <!--Khach Hang Start-->
+
+            <div class="row">
+                <input type="hidden" name="idKhachHang" #idKhachHang="ngModel"
+                    [(ngModel)]="donhangService.khachHang.idKhachHang" class="form-control">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Tên Khách Hàng</label>
+                        <input type="text" name="TenKhachHang" #TenKhachHang="ngModel"
+                            [(ngModel)]="donhangService.khachHang.TenKhachHang" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="Email" #Email="ngModel" [(ngModel)]="donhangService.khachHang.Email"
+                            class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Số Điện Thoại</label>
+                        <input type="tel" name="SoDienThoai" #SoDienThoai="ngModel"
+                            [(ngModel)]="donhangService.khachHang.SoDienThoai" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Giới Tính</label>
+                        <select name="GioiTinh" #GioiTinh="ngModel" [(ngModel)]="donhangService.khachHang.GioiTinh"
+                            class="form-control">
+                            <option value=""> -- Chọn Giới Tính --</option>
+                            <option value="Nam"> Nam </option>
+                            <option value="Nữ"> Nữ </option>
+                            <option value="Khác"> Khác </option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Địa Chỉ</label>
+                        <input type="text" name="DiaChi" #DiaChi="ngModel" [(ngModel)]="donhangService.khachHang.DiaChi"
+                            class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <!--Khach Hang End-->
+
+            <!--Gio Hang Start-->
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-boderless">
+
+                        <thead class="thead-light">
+                            <th>STT</th>
+                            <th>Tên Sản Phẩm</th>
+                            <th>Đơn Giá</th>
+                            <th>Số Lượng</th>
+                            <th>Tổng Cộng</th>
+                            <th>Chức Năng</th>
+                            <th>
+                                <a class="btn btn-outline-success"
+                                    (click)="AddOrEditGioHang(null,donhangService.formData.idDonHang)">
+                                    <i class="fa fa-plus"></i>
+                                    Thêm Sản Phẩm
+                                </a>
+                            </th>
+                        </thead>
+
+                        <tbody>
+
+                            <tr *ngIf="donhangService.giohangList.length==0"
+                                [class.text-danger]="!isValid && donhangService.giohangList.length==0">
+                                <td class="font-italic text-center" colspan="7">
+                                    Chưa thêm sản phẩm nào vào giỏ hàng
+                                </td>
+                            </tr>
+
+                            <tr *ngFor="let item of donhangService.giohangList;let i = index;">
+                                <td>{{i + 1}}</td>
+                                <td>{{item.SanPhamName}}</td>
+                                <td>{{item.SanPhamPrice | number}}</td>
+                                <td>{{item.SoLuong | number}}</td>
+                                <td>{{item.SoLuong * item.SanPhamPrice  | number}}</td>
+                                <td>
+                                    <a class="btn btn-sm btn-info text-white"
+                                        (click)="AddOrEditGioHang(i,donhangService.formData.idDonHang)">
+                                        <i class="fa fa-pencil"></i>
+
+                                    </a>
+                                    <a class="btn btn-sm btn-danger text-white ml-1"
+                                        (click)="onDeleteGioHang(item.idGioHang,i)">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+            <!--Gio Hang End-->
+
+            <div class="row">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-success" class="form-control">Xác Nhận</button>
+                </div>
+                <div class="col-md-6">
+
+                    <button class="btn btn-danger" routerLink="/donhang" class="form-control">Hủy Bỏ</button>
+
+
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

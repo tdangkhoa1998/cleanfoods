@@ -1,0 +1,35 @@
+<table class="table table-hover">
+
+    <thead>
+        <td>STT</td>
+        <td>Mã Số Đơn Hàng</td>
+        <td>Tên Khách Hàng</td>
+        <td>Tổng Tiền</td>
+        <td>Trạng Thái</td>
+        <td>Ngày Đặt Đơn</td>
+        <td> Chức Năng </td>
+        <td> <button class="btn btn-sm btn-outline-success" routerLink="/donhanginfo">+</button></td>
+    </thead>
+
+    <tbody>
+
+        <tr *ngIf="donhangList.length==0" [class.text-danger]="!isValid && donhangList.length == 0">
+            <td class="font-italic text-center" colspan="8">
+                Chưa có đơn hàng nào được thêm vào
+            </td>
+        </tr>
+
+        <tr *ngFor="let item of donhangList; let i = index">
+            <td (click)="openForEdit(item.idDonHang)">{{i+1}}</td>
+            <td (click)="openForEdit(item.idDonHang)">{{item.MaSoDonHang}}</td>
+            <td (click)="openForEdit(item.idDonHang)">{{item.TenKhachHang}}</td>
+            <td (click)="openForEdit(item.idDonHang)">{{item.TongTien | number}}</td>
+            <td (click)="openForEdit(item.idDonHang)">{{item.TrangThai}}</td>
+            <td (click)="openForEdit(item.idDonHang)">{{item.NgayXacNhanDonHang}}</td>
+            <td>
+                <button class="btn btn-sm btn-outline-danger" (click)="onDonHangDelete(item.idDonHang)">X</button>
+            </td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,88 @@
+<div class="hero-wrap hero-bread" style="background-image: url('../../assets/images/bg_1.jpg');">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12" style="color: white;">
+                <p style="text-transform: uppercase;">Trang Giỏ Hàng</p>
+                <h3 style="font-weight: bold; color: white;">Giỏ Hàng Của Bạn</h3>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-7">
+                <form #form="ngForm" action="#" class="billing-form" (submit)="onSubmit(form)">
+                    <h3 class="mb-4 billing-heading">Thông tin cá nhân</h3>
+                    <div class="row align-items-end">
+
+                        <input type="hidden" class="form-control" name="idKhachHang" #idKhachHang="ngModel"
+                            [(ngModel)]="donhangService.khachHang.idKhachHang">
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Họ và tên</label>
+                                <input type="text" class="form-control" placeholder="Họ tên" name="TenKhachHang"
+                                    required
+                                    [class.is-invalid]="!isValid && donhangService.khachHang.TenKhachHang == null"
+                                    #TenKhachHang="ngModel" [(ngModel)]="donhangService.khachHang.TenKhachHang">
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Số điện thoại</label>
+                                <input type="tel" class="form-control" placeholder="Số điện thoại" name="SoDienThoai"
+                                    [class.is-invalid]="!isValid && donhangService.khachHang.SoDienThoai == 0"
+                                    #SoDienThoai="ngModel" [(ngModel)]="donhangService.khachHang.SoDienThoai">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Giới tính</label>
+                                <div class="select-wrap">
+                                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                    <select name="GioiTinh" #GioiTinh="ngModel"
+                                        [class.is-invalid]="!isValid && donhangService.khachHang.GioiTinh == 0"
+                                        [(ngModel)]="donhangService.khachHang.GioiTinh" class="form-control">
+                                        <option value="0">-- Select --</option>
+                                        <option value="Nam">Nam</option>
+                                        <option value="Nữ">Nữ</option>
+                                        <option value="Khác">Khác</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Địa chỉ Email</label>
+                                <input type="email" class="form-control" placeholder="Email" name="Email"
+                                    [class.is-invalid]="!isValid && donhangService.khachHang.Email == null"
+                                    #Email="ngModel" [(ngModel)]="donhangService.khachHang.Email">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Địa chỉ</label>
+                                <input type="text" class="form-control" placeholder="Địa chỉ" name="DiaChi"
+                                    [class.is-invalid]="!isValid && donhangService.khachHang.DiaChi == null"
+                                    #DiaChi="ngModel" [(ngModel)]="donhangService.khachHang.DiaChi">
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-md-12 text-center">
+                            <button type="submit" href="#" [disabled]="form.invalid"
+                                class="btn btn-primary py-3 px-4">Xác
+                                nhận thanh
+                                toán</button>
+                        </div>
+                    </div>
+                </form><!-- END -->
+            </div>
+        </div>
+    </div>
+</section> <!-- .section -->

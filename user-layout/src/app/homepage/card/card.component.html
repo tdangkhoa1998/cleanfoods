@@ -1,0 +1,91 @@
+<div class="hero-wrap hero-bread" style="background-image: url('../../assets/images/bg_1.jpg');">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-12" style="color: white;">
+        <p style="text-transform: uppercase;">Trang Giỏ Hàng</p>
+        <h3 style="font-weight: bold; color: white;">Giỏ Hàng Của Bạn</h3>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<section class="ftco-section ftco-cart">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 ">
+        <div class="cart-list">
+          <table class="table">
+            <thead class="thead-primary">
+              <tr class="text-center">
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Giá Tiền</th>
+                <th>Số Lượng</th>
+                <th>Tổng Tiền</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr *ngIf="cartAmount==0" [class.text-danger]="!isValid && dcartAmount==0">
+                <td class="font-italic text-center" colspan="6">
+                  Chưa có sản phẩm nào trong giỏ hàng
+                </td>
+              </tr>
+
+              <tr class="text-center" *ngFor="let item of donhangService.giohangList">
+                <td class="product-remove"><a (click)="onDeleteItem(item.idGioHang)"><span
+                      class="ion-ios-close"></span></a></td>
+                <td class="image-prod">
+                  <img accept="image/*" [src]="'../../../assets/images/' + item.HinhAnh " class="img">
+                </td>
+                <td class="product-name">
+                  <h3>{{item.TenSanPham}}</h3>
+                  <p>{{item.NoiDung}}</p>
+                </td>
+
+                <td class="price">{{item.GiaBan | number}}</td>
+
+
+                <td class="quantity">
+                  <button class="btn btn-outline-success form-control"
+                    (click)="onChangeSoLuong(item.idGioHang,item.idSanPham)">
+                    {{item.SoLuong}}
+                  </button>
+                </td>
+
+                <td class="total">{{item.TongTien | number}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-end">
+      <div class="col-lg-5 mt-6 cart-wrap">
+        <div class="cart-total mb-3">
+          <h3>Tổng giá trị đơn hàng</h3>
+          <hr>
+          <p class="d-flex">
+            <span>Tổng giỏ hàng: </span>
+            <span>{{totalSanPham | number}}</span>
+          </p>
+          <p class="d-flex">
+            <span>Phí giao hàng: </span>
+            <span>{{phiGiaoHang | number}}</span>
+          </p>
+          <p class="d-flex total-price">
+            <span> <b>Tổng Đơn Hàng:</b> </span>
+            <span>{{totalSanPham + phiGiaoHang | number}} VND</span>
+          </p>
+        </div>
+
+        <p><a class="btn btn-primary py-3 px-4" *ngIf="phiGiaoHang != 0" routerLink="/cart-info">Xác Nhận Thanh Toán</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>

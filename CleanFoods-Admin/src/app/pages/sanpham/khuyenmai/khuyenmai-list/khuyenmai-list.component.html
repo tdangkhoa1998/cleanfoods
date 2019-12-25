@@ -1,0 +1,21 @@
+<table class="table table-hover">
+
+    <thead>
+        <td>STT</td>
+        <td>% Khuyến Mãi</td>
+        <td>Bắt đầu - Kết thúc</td>
+        <td>Chức Năng</td>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let item of khuyenmaiService.khuyenmaiList; let i = index">
+            <td (click)="populateForm(item)">{{i+1}}</td>
+            <td (click)="populateForm(item)">{{item.PhanTramKM}}</td>
+            <td (click)="populateForm(item)">{{item.NgayBD | date: 'dd/MM/yyyy'}} -- {{item.NgayKT | date: 'dd/MM/yyyy'}}</td>
+            <td>
+                <button (click)="onDelete(item.idKhuyenMai)" class="btn btn-sm btn-outline-danger">X</button>
+            </td>
+        </tr>
+    </tbody>
+
+</table>

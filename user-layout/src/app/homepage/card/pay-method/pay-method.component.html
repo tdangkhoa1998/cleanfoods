@@ -1,0 +1,46 @@
+<section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-12">
+        <div class="row mt-5 pt-3">
+          <div class="col-md-12 d-flex mb-5">
+            <div class="cart-detail cart-total p-3 p-md-4">
+
+              <form autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
+
+                <input type="hidden" name="idDonHang" #idDonHang="ngModel"
+                  [(ngModel)]="donhangService.donHang.idDonHang">
+                <input type="hidden" name="MaSoDonHang" #MaSoDonHang="ngModel"
+                  [(ngModel)]="donhangService.donHang.MaSoDonHang">
+                <input type="hidden" name="idKhachHang" #idKhachHang="ngModel"
+                  [(ngModel)]="donhangService.donHang.idKhachHang">
+                <input type="hidden" name="TongTien" #TongTien="ngModel" [(ngModel)]="donhangService.donHang.TongTien">
+                <input type="hidden" name="TrangThai" #TrangThai="ngModel"
+                  [(ngModel)]="donhangService.donHang.TrangThai">
+                <input type="hidden" name="NgayXacNhanDonHang" #NgayXacNhanDonHang="ngModel"
+                  [(ngModel)]="donhangService.donHang.NgayXacNhanDonHang">
+
+                <h3 class="billing-heading mb-4">Phương thức thanh toán</h3>
+                <div class="form-group">
+                  <select name="PhuongThucThanhToan" #PhuongThucThanhToan="ngModel"
+                    [(ngModel)]="donhangService.donHang.PhuongThucThanhToan" class="form-control">
+                    <option value="0">-Select-</option>
+                    <option value="Thanh toán bắng tiền mặt">
+                      Thanh toán bắng tiền mặt </option>
+                    <option value="Thanh toán bắng thẻ">
+                      Thanh toán bắng thẻ</option>
+                    <option value="Thanh toán qua Paypal">
+                      Thanh toán qua Paypal</option>
+                  </select>
+                </div>
+                <button type="submit" href="#" class="btn btn-primary py-3 px-4">Xác nhận thanh
+                  toán</button>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

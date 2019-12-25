@@ -1,0 +1,69 @@
+<div class="search-div">
+
+    <mat-form-field class="search-form-field" floatLabel="never">
+        <input matInput [(ngModel)]="searchKey" placeholder="Tìm kiếm" autocomplete="off" (keyup)="applyFilter()">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+</div>
+
+<div class="mat-elevation-z8">
+    <mat-table [dataSource]="khachhangService.listData" matSort>
+
+        <ng-container matColumnDef="TenKhachHang">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Họ Tên</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.TenKhachHang}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Email">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.Email}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="SoDienThoai">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Số Điện Thoại</mat-header-cell>
+            <mat-cell *matCellDef="let element">0{{element.SoDienThoai}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="DiaChi">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Địa Chỉ</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.DiaChi}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="GioiTinh">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Giới Tính</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.GioiTinh}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let row">
+
+                <button mat-icon-button (click)="onEdit(row)">
+                    <mat-icon>launch</mat-icon>
+                </button>
+
+            </mat-cell>
+        </ng-container>
+
+      
+
+        <!-- <ng-container matColumnDef="noData">
+            <mat-footer-cell *matFooterCellDef colspan="6">
+                No data ...
+            </mat-footer-cell>
+        </ng-container> -->
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <!-- <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide': listData!=null}"></mat-footer-row>
+        <mat-footer-row *matFooterRowDef="['noData']"
+            [ngClass]="{'hide': !(listData!=null && listData.data.length==0)}">
+        </mat-footer-row> -->
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[5,10,25,100]" [pageSize]="5"></mat-paginator>
+
+</div>

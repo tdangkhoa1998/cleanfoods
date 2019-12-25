@@ -1,0 +1,49 @@
+<!-- Section Sản Phẩm Start -->
+
+<div class="hero-wrap hero-bread" style="background-image: url('../../assets/images/bg_1.jpg');">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-12" style="color: white;">
+        <p style="text-transform: uppercase;">Trang Sản Phẩm</p>
+        <h3 style="font-weight: bold; color: white;">Danh Sách Sản Phẩm</h3>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Section Sản Phẩm End -->
+
+
+
+
+<section class="ftco-section">
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-3 mb-3 text-center">
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-lg-3 text-center product-info" *ngFor="let item of sanphamList">
+        <a> <img (click)="onViewDetail(item.idSanPham)" class="img-fluid" accept="image/*"
+            style="width: 200px; height: 200px;" [src]="'../../assets/images/' + item.HinhAnh"></a>
+        <div>
+          <p class="mt-2" style="font-weight: bold;">{{item.TenSanPham}}</p>
+          <p style="color: #82AE46;">{{item.GiaBan}} đồng/Kg</p>
+          <button class="btn btn-outline-warning" (click)="onViewDetail(item.idSanPham)" style="margin: 5px;"><i
+              class="fas fa-grip-lines"></i></button>
+          <button class="btn btn-outline-success" style="margin: 5px;" (click)="onAddSanPhamToCart(item.idSanPham)"><i
+              class="fas fa-shopping-cart"></i></button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</section>

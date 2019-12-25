@@ -1,0 +1,68 @@
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+
+    <input type="hidden" name="idSanPham" #idSanPham="ngModel" [(ngModel)]="sanphamService.formData.idSanPham"
+        class="form-control">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="form-group">
+                <label> Tên Sản Phẩm</label>
+                <input name="TenSanPham" #TenSanPham="ngModel" [(ngModel)]="sanphamService.formData.TenSanPham"
+                    class="form-control" required>
+                <div class="validation-error" *ngIf="TenSanPham.invalid && TenSanPham.touched"><small>Trường này không
+                        được bỏ trống</small></div>
+
+                <label class="mt-2"> Hình Sản Phẩm</label>
+            </div>
+
+            <div class="form-group text-center">
+                <img [src]="imageURL" style="width: 250px; height: 200px;"
+                    (change)="handleFileInput($event.target.files)">
+                <input type="file" name="HinhAnh" #HinhAnh="ngModel" [(ngModel)]="sanphamService.formData.HinhAnh"
+                    accept="image/*" (change)="handleFileInput($event.target.files)" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label> Thuộc Nhóm Hàng</label>
+                <select name="idNhomHang" #idNhomHang="ngModel" [(ngModel)]="sanphamService.formData.idNhomHang"
+                    class="form-control" [class.is-invalid]="!isValid && sanphamService.formData.idNhomHang == 0">
+                    <option value="0">-Select-</option>
+                    <option *ngFor="let item of nhomhangService.nhomhangList" value="{{item.idNhomHang}}">
+                        {{item.TenNhomHang}} </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label> Thuộc Thương Hiệu</label>
+                <select name="idThuongHieu" #idThuongHieu="ngModel" [(ngModel)]="sanphamService.formData.idThuongHieu"
+                    class="form-control" [class.is-invalid]="!isValid && sanphamService.formData.idThuongHieu == 0">
+                    <option value="0">-Select-</option>
+                    <option *ngFor="let item of thuonghieuService.thuonghieuList" value="{{item.idThuongHieu}}">
+                        {{item.TenThuongHieu}} </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Chi Tiết Sản Phẩm</label>
+                <textarea name="NoiDung" #NoiDung="ngModel" [(ngModel)]="sanphamService.formData.NoiDung" required
+                    class="form-control" rows="3"></textarea>
+                <div class="validation-error" *ngIf="NoiDung.invalid && NoiDung.touched"><small>Trường này không
+                        được bỏ trống</small></div>
+            </div>
+
+            <div class="form-group">
+                <label>Giá Tiền</label>
+                <input type="number" name="GiaBan" #GiaBan="ngModel" [(ngModel)]="sanphamService.formData.GiaBan"
+                    class="form-control" required>
+                <div class="validation-error" *ngIf="GiaBan.invalid && GiaBan.touched"><small>Trường này không
+                        được bỏ trống</small></div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" [disabled]="form.invalid" class="btn btn-primary btn-block"> Xác Nhận </button>
+            </div>
+
+        </div>
+    </div>
+</form>

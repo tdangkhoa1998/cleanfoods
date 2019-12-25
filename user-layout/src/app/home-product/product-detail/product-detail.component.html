@@ -1,0 +1,56 @@
+<!--Section Chi tiết sản phẩm start-->
+<div class="hero-wrap hero-bread" style="background-image: url('../../assets/images/bg_1.jpg');">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-12" style="color: white;">
+        <p style="text-transform: uppercase;">Chi tiết sản phẩm</p>
+        <h3 style="font-weight: bold; color: white;">Sản Phẩm</h3>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Section Chi tiết sản phẩm end-->
+
+<!--Section Sản Phẩm start-->
+
+<section class="ftco-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <a href="../../../assets/images/product-10.jpg" class="image-popup"><img class="img-fluid"
+            [src]="'../../../assets/images/' +  sanphamDetail.HinhAnh"></a>
+      </div>
+      <div class="col-md-6">
+        <h3>{{sanphamDetail.TenSanPham}} - {{sanphamDetail.TenThuongHieu}}</h3>
+
+        <p class="price"> <b>Đơn Giá: </b> <span>{{sanphamDetail.GiaBan}} đồng/KG</span></p>
+        <p> <b>Chi tiết sản phẩm: </b> {{sanphamDetail.NoiDung}}
+        </p>
+
+        <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+
+          <input type="hidden" name="idGioHang" #idGioHang="ngModel" [(ngModel)]="formData.idGioHang">
+          <input type="hidden" name="idSanPham" #idSanPham="ngModel" [(ngModel)]="formData.idSanPham">
+
+          <div class="row mt-4">
+            <div class="input-group col-md-6 d-flex mb-3">
+              <label class="mr-5"> <b>Số lượng: </b> </label>
+              <input type="number" class="form-control" max="600" min="1" name="SoLuong" #SoLuong="ngModel"
+                [class.is-invalid]="!isValid && (formData.SoLuong <= 0 ||formData.SoLuong > 600)"
+                [(ngModel)]="formData.SoLuong" required>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-md-12">
+              <p style="color: #000;"> <b>Ghi chú: </b> Số lượng đặt hàng cho phép là <b>600Kg</b> (Nếu quý khách có nhu
+                cầu mua với số lượng lớn hơn vui lòng liên hệ <b>+84 359 578 710</b> )</p>
+              <button type="submit" [disabled]="form.invalid || (formData.SoLuong <= 0 ||formData.SoLuong > 600)"
+                class="btn btn-outline-success py-3 px-5">Thêm Vào Giỏ Hàng</button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!--Section Sản Phẩm end-->

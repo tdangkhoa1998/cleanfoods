@@ -1,0 +1,22 @@
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+    <div class="row">
+        <div class="col-md-12">
+
+            <input type="hidden" name="idNhomHang" #idNhomHang="ngModel"
+                [(ngModel)]="nhomhangService.formData.idNhomHang">
+
+            <div class="form-group">
+                <label> Tên Nhóm Hàng </label>
+                <input name="TenNhomHang" #TenNhomHang="ngModel" [(ngModel)]="nhomhangService.formData.TenNhomHang"
+                    class="form-control" required>
+                <div class="validation-error" *ngIf="TenNhomHang.invalid && TenNhomHang.touched"><small>Trường này không
+                        được bỏ trống</small></div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" [disabled]="form.invalid" class="btn btn-primary btn-block"> Xác Nhận </button>
+            </div>
+
+        </div>
+    </div>
+</form>

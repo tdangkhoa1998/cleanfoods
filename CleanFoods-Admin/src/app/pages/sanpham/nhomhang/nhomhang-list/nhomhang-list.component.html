@@ -1,0 +1,19 @@
+<table class="table table-hover">
+
+    <thead>
+        <td>STT</td>
+        <td>Tên Nhóm Hàng</td>
+        <td>Chức Năng</td>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let item of nhomhangService.nhomhangList; let i = index">
+            <td (click)="populateForm(item)">{{i+1}}</td>
+            <td (click)="populateForm(item)">{{item.TenNhomHang}}</td>
+            <td>
+                <button (click)="onDelete(item.idNhomHang)" class="btn btn-sm btn-outline-danger">X</button>
+            </td>
+        </tr>
+    </tbody>
+
+</table>

@@ -1,0 +1,59 @@
+.carousel-item .carousel-caption {
+    padding-bottom: 40vh;
+}
+
+.carousel-item .carousel-caption h1{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 55px;
+    color: white;
+    font-weight: bold;
+}
+
+.image-foods{
+    height: 300px;
+    width: 300px;
+    margin: 20px;
+    background-size: cover;
+    text-align: center;
+}
+
+#img-1{
+    background-image: url(../../assets/images/category-1.jpg); 
+}
+#img-2{
+    background-image: url(../../assets/images/category-2.jpg); 
+}
+#img-3{
+    background-image: url(../../assets/images/category-3.jpg); 
+}
+#img-4{
+    background-image: url(../../assets/images/category-4.jpg); 
+}
+
+.image-foods button{
+    width: 150px;
+    opacity: 0.9;
+    position: relative;
+    top: 50%;
+}
+
+.shopnow .text {
+    padding-top: 50px;
+}
+.shopnow h1{
+    color: #82AE46;
+    margin-top: 20px;
+}
+
+.shopnow img{
+    height: 400px;
+    width: 350px;
+    margin-top: 20px;
+}
+
+.product-info{
+    border: none;
+}
+.product-info img{
+    margin-top: 20px;
+}
